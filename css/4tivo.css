@@ -1,0 +1,16 @@
+output {
+  position: relative;
+  margin-top: 2%;
+  height: 90%;
+  overflow: hidden;
+}
+output pre {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  position: absolute;
+}
+#tools-right .play,
+#tools-right .pause {
+  margin-left: 32px;
+}
