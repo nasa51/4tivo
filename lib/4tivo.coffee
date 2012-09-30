@@ -1,12 +1,12 @@
 root = exports ? this
 root.next = (name) ->
-  if $('.play').length == 0
-    $(name).animate top: "-=" + $(name).css 'line-height',
-      'fast'
-    root.string++
-    words = root.strings[root.string].split ' '
-    words = words.filter (e) -> e
-    root.setTimeout "next('" + name + "')", 60000 * words.length / $('#speed').val()
+  clearInterval root.playInterval
+  $(name).animate top: "-=" + $(name).css 'line-height',
+    'fast'
+  root.string++
+  words = root.strings[root.string].split ' '
+  words = words.filter (e) -> e
+  root.playInterval = root.setInterval "next('" + name + "')", 60000 * words.length / $('#speed').val()
   true
 
 root.playInterval = 0
@@ -19,10 +19,11 @@ $('.play').live 'click', (event) ->
   $('.play').removeClass 'play'
   words = root.strings[root.string].split(' ')
   words = words.filter (e) -> e
-  setTimeout "next('output pre')", 60000 * words.length / $('#speed').val()
+  root.playInterval = root.setInterval "next('output pre')", 60000 * words.length / $('#speed').val()
   false
 
 $('.pause').live 'click', (event) ->
+  clearInterval root.playInterval
   $('.pause').addClass 'play'
   $('.pause').text 'Play'
   $('.pause').removeClass 'pause'

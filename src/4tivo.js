@@ -6,17 +6,16 @@
 
   root.next = function(name) {
     var words;
-    if ($('.play').length === 0) {
-      $(name).animate({
-        top: "-=" + $(name).css('line-height')
-      }, 'fast');
-      root.string++;
-      words = root.strings[root.string].split(' ');
-      words = words.filter(function(e) {
-        return e;
-      });
-      root.setTimeout("next('" + name + "')", 60000 * words.length / $('#speed').val());
-    }
+    clearInterval(root.playInterval);
+    $(name).animate({
+      top: "-=" + $(name).css('line-height')
+    }, 'fast');
+    root.string++;
+    words = root.strings[root.string].split(' ');
+    words = words.filter(function(e) {
+      return e;
+    });
+    root.playInterval = root.setInterval("next('" + name + "')", 60000 * words.length / $('#speed').val());
     return true;
   };
 
@@ -35,11 +34,12 @@
     words = words.filter(function(e) {
       return e;
     });
-    setTimeout("next('output pre')", 60000 * words.length / $('#speed').val());
+    root.playInterval = root.setInterval("next('output pre')", 60000 * words.length / $('#speed').val());
     return false;
   });
 
   $('.pause').live('click', function(event) {
+    clearInterval(root.playInterval);
     $('.pause').addClass('play');
     $('.pause').text('Play');
     $('.pause').removeClass('pause');
