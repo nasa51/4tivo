@@ -1,16 +1,46 @@
+body {
+  font-size: 14px;
+  font-family: Verdana, Arial, sans-serif;
+  background: url(../images/body.jpg) left top repeat;
+}
+.ui-loader {
+  display: none;
+}
 output {
+  margin: 1% 0 0;
+  padding: 1% 12%;
+  background: url(../images/old_paper6.jpg) center center no-repeat;
+  box-shadow: 0px 0px 20px 5px #333;
+  border-radius: 15px;
+}
+output .wrapper {
   position: relative;
   margin-top: 2%;
   height: 90%;
   overflow: hidden;
 }
 output pre {
+  font-size: 14px;
+  font-family: Verdana, Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  line-height: 20px;
   border: none;
   border-radius: 0;
   width: 100%;
   position: absolute;
+  background: transparent;
+  color: #641900;
+  padding: 0;
 }
-#tools-right .play,
-#tools-right .pause {
-  margin-left: 32px;
+#tools-right {
+  padding-top: 10px;
+  text-align: center;
+}
+.android {
+  margin: 0 auto;
+  width: 120px;
+}
+.android .dw {
+  min-width: 80px;
 }

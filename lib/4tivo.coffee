@@ -1,6 +1,6 @@
 root = exports ? this
 root.next = (name) ->
-  if $('.play').length == 0
+  if $('.play').length == 0 or $(name).css('top') >= $(name).css('height')
     $(name).animate top: "-=" + $(name).css 'line-height',
       'fast'
     root.string++

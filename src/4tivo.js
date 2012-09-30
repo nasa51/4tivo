@@ -6,7 +6,7 @@
 
   root.next = function(name) {
     var words;
-    if ($('.play').length === 0) {
+    if ($('.play').length === 0 || $(name).css('top') >= $(name).css('height')) {
       $(name).animate({
         top: "-=" + $(name).css('line-height')
       }, 'fast');
